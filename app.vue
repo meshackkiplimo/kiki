@@ -1,19 +1,26 @@
 <template>
-  <div>
-    <NuxtPage />
+  <div class="min-h-screen bg-gray-100">
+    <Navbar /> <!-- Your global navbar -->
+    <NuxtPage />   <!-- This will render the page content (including Hero) -->
   </div>
 </template>
 
 <script>
+
+import Navbar from '~/components/Navbar.vue'; // Import your Navbar component
+
 export default {
-  head() {
-    return {
-      title: "My Portfolio", // Set global title for the app
-    };
+  components: {
+    Navbar, // Register the Navbar component
   },
 };
 </script>
 
-<style>
-/* Add any global styles here if needed */
+<style scoped>
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 </style>

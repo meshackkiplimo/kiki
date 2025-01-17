@@ -1,9 +1,8 @@
 module.exports = {
   content: [
-    './pages/**/*.{vue,js}',
-    './components/**/*.{vue,js}',
-    './layouts/**/*.{vue,js}',
-    './app.vue',
+    "./components/**/*.{vue,js}",
+    "./layouts/**/*.{vue,js}",
+    "./pages/**/*.{vue,js}",
   ],
   theme: {
     extend: {},
