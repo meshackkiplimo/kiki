@@ -24,7 +24,7 @@ export default {
 </script>
 
 <template>
-  <header class=" text-white p-4 flex justify-between items-center">
+  <header class=" text-black p-4 flex justify-between items-center">
    
 
     <!-- Dynamic Button/Profile -->
