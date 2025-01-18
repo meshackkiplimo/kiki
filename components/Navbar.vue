@@ -18,7 +18,7 @@
          
         </ul>
         <div>
-            <button class="bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100">Get Started</button>
+            <button @click="$router.push('/login')" class="bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100">Get Started</button>
         </div>
       </div>
     </nav>
