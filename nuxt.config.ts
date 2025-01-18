@@ -1,6 +1,5 @@
 // nuxt.config.js
 export default defineNuxtConfig({
-  // Set compatibility date to ensure compatibility with Nuxt releases
   compatibilityDate: '2024-11-01',
 
   // Enable Nuxt DevTools for debugging during development
@@ -12,12 +11,17 @@ export default defineNuxtConfig({
   // Configure PostCSS plugins
   postcss: {
     plugins: {
-      tailwindcss: {}, // Enables Tailwind CSS
-      autoprefixer: {}, // Automatically adds vendor prefixes
+      tailwindcss: {}, 
+      autoprefixer: {}, 
+    },
+  },
+  runtimeConfig: {
+    public: {
+      apiBase: process.env.API_BASE_URL || 'http://localhost:9000/api',
     },
   },
 
-  // Add external resources (Font Awesome CDN)
+  
  app:{head: {
     link: [
       {

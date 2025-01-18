@@ -4,7 +4,10 @@ export default {
   components: {
     Hero,  
   },
+  
 };
+
+
 </script>
 
 <template>
