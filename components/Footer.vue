@@ -12,7 +12,7 @@ export default {
     </main>
 
     <!-- Footer -->
-    <footer class="bg-blue-600 text-white py-2">
+    <footer class="bg-orange-500 text-white py-2">
       <div class="max-w-screen-xl mx-auto px-4">
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
           <!-- Company Info Section -->
