@@ -1,6 +1,11 @@
+
 <script>
+
+import { useAuth } from '../composables/useAuth';
+import Profile from './Profile.vue';
   export default {
-    // Navbar component logic if needed
+
+   
   };
   </script>
 
@@ -18,7 +23,15 @@
          
         </ul>
         <div>
-            <button @click="$router.push('/login')" class="bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100">Get Started</button>
+            <button v-if="!useAuth().isAuthenticated.value" @click="$router.push('/login')" class="bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100">Get Started</button>
+        </div>
+        <div>
+        <Profile
+        v-if="useAuth().isAuthenticated.value"
+        :user="useAuth().user.value"
+        
+        
+        />
         </div>
       </div>
     </nav>
