@@ -9,7 +9,7 @@
     <nav class="bg-blue-600 text-white shadow-md py-4">
       <div class="max-w-screen-xl mx-auto flex justify-between items-center px-4">
         <div class="text-2xl font-bold">
-          <a href="/" class="hover:text-gray-300">KIKIE Car</a>
+          <a href="/" class="hover:text-gray-300">Kokya Car</a>
         </div>
         <ul class="flex space-x-6">
           <li><a href="/" class="hover:text-gray-300">Home</a></li>
