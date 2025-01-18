@@ -23,6 +23,9 @@ import Profile from './Profile.vue';
          
         </ul>
         <div>
+        <button @click="$router.push('/create')"  class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-green-800">Create</button>
+        </div>
+        <div>
             <button v-if="!useAuth().isAuthenticated.value" @click="$router.push('/login')" class="bg-white text-blue-600 px-4 py-2 rounded-md hover:bg-gray-100">Get Started</button>
         </div>
         <div>
