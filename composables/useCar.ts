@@ -9,7 +9,7 @@ interface Car {
   mileage: number;
   year: number;
   carType: string;
-  image: File | null;
+  // image: File | null;
 }
 
 interface CarCredentials {
@@ -20,7 +20,7 @@ interface CarCredentials {
   mileage: number;
   year: number;
   carType: string;
-  image: File | null;
+  // image: File | null;
 }
 
 export const useCar = () => {
@@ -32,7 +32,7 @@ export const useCar = () => {
 
   const fetchCars = async () => {
     try {
-      const response = await fetch(`${baseURL}/cars`);
+      const response = await fetch(`${baseURL}/api/cars/create`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -56,9 +56,9 @@ export const useCar = () => {
       formData.append('mileage', credentials.mileage.toString());
       formData.append('year', credentials.year.toString());
       formData.append('carType', credentials.carType);
-      if (credentials.image) {
-        formData.append('image', credentials.image);
-      }
+      // if (credentials.image) {
+      //   formData.append('image', credentials.image);
+      // }
 
       const response = await fetch(`${baseURL}/cars/create`, {
         method: 'POST',
@@ -105,9 +105,9 @@ export const useCar = () => {
       formData.append('mileage', credentials.mileage.toString());
       formData.append('year', credentials.year.toString());
       formData.append('carType', credentials.carType);
-      if (credentials.image) {
-        formData.append('image', credentials.image);
-      }
+      // if (credentials.image) {
+      //   formData.append('image', credentials.image);
+      // }
 
       const response = await fetch(`${baseURL}/cars/${carId}/update`, {
         method: 'PUT',
