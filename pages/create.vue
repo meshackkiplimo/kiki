@@ -11,6 +11,9 @@ const router = useRouter();
 const car = ref({
   type: "",
   plate: "",
+  model: "",
+  color: "",
+  milage: 0,
 });
 
 // Form submission handler
@@ -56,6 +59,21 @@ const handleSubmit = async () => {
           type="text" v-model="car.plate" id="plate" required 
           class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" 
         />
+        <div>
+        <label for="type"  class="block text-sm font-medium text-gray-700">Car model</label>
+        <input type="text" v-model="car.model" id="model" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        
+        </div>
+        <div>
+        <label for="type"  class="block text-sm font-medium text-gray-700">Color</label>
+        <input type="text" v-model="car.color" id="color" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        
+        </div>
+        <div>
+        <label for="type"  class="block text-sm font-medium text-gray-700">Milage</label>
+        <input type="text" v-model="car.milage" id="milage" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        
+        </div>
       </div>
 
       <!-- Submit Button -->
