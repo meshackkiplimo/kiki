@@ -3,11 +3,17 @@ import { ref, computed } from 'vue';
 interface Car {
   type: string;
   plate: string;
+  model: string;
+  color: string;
+  milage: number;
 }
 
 interface CarCredentials {
   type: string;
   plate: string;
+  model: string;
+  color: string;
+  milage: number;
 }
 
 export const useCar = () => {
@@ -39,7 +45,7 @@ export const useCar = () => {
     try {
       const response = await fetch(`${baseURL}/cars/create`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }, // ✅ Fix: Correct content type
+        headers: { 'Content-Type': 'application/json' }, 
         body: JSON.stringify(credentials),
       });
 
