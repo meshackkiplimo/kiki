@@ -1,19 +1,28 @@
 import { ref, computed } from 'vue';
 
 interface Car {
-  type: string;
+  brand: string;
   plate: string;
   model: string;
   color: string;
   milage: number;
+  fuel: string;
+  year: number;
+  capacity: number;
+  price: number;
 }
 
 interface CarCredentials {
-  type: string;
+  brand: string;
   plate: string;
   model: string;
   color: string;
   milage: number;
+  fuel: string;
+  year: number;
+  capacity: number;
+  price: number;
+
 }
 
 export const useCar = () => {
