@@ -66,6 +66,12 @@ export default {
             >
               Logout
             </li>
+            <li>
+              <div>
+        <button @click="$router.push('/create')"  class="bg-orange-500 text-white px-4 py-2 rounded-md hover:bg-green-800">Create</button>
+        </div>
+            
+            </li>
           </ul>
         </div>
       </div>
