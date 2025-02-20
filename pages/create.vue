@@ -17,16 +17,21 @@ const car = ref({
   year: 0,
   price:0,
   fuel:'',
-
-  
   capacity:0,
+  transmission:'',
+  engine:'',
+  description:'',
+ 
+
+
+
 
 });
 
 // Form submission handler
 const handleSubmit = async () => {
   // Validation for required fields
-  if (!car.value.brand || !car.value.plate || !car.value.model || !car.value.color || !car.value.milage || !car.value.year || !car.value.price || !car.value.fuel || !car.value.capacity ) {
+  if (!car.value.brand || !car.value.plate || !car.value.model || !car.value.color || !car.value.milage || !car.value.year || !car.value.price || !car.value.fuel || !car.value.capacity || !car.value.transmission || !car.value.engine || !car.value.description) {
     alert("Please fill in all required fields.");
     return;
   }
@@ -99,6 +104,21 @@ const handleSubmit = async () => {
         <div>
         <label for="type"  class="block text-sm font-medium text-gray-700">Capacity</label>
         <input type="text" v-model="car.capacity" id="capacity" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        
+        </div>
+        <div>
+        <label for="type"  class="block text-sm font-medium text-gray-700">Transmission</label>
+        <input type="text" v-model="car.transmission" id="transmission" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        
+        </div>
+        <div>
+        <label for="type"  class="block text-sm font-medium text-gray-700">Engine</label>
+        <input type="text" v-model="car.engine" id="engine" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        
+        </div>
+        <div>
+        <label for="type"  class="block text-sm font-medium text-gray-700">Description</label>
+        <input type="text" v-model="car.description" id="description" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
         
         </div>
       </div>
