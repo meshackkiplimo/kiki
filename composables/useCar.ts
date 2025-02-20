@@ -10,6 +10,9 @@ interface Car {
   year: number;
   capacity: number;
   price: number;
+  engine: string;
+  transmission: string;
+  description: string;
 }
 
 interface CarCredentials {
@@ -22,6 +25,9 @@ interface CarCredentials {
   year: number;
   capacity: number;
   price: number;
+  engine: string;
+  transmission: string;
+  description: string;
 
 }
 
