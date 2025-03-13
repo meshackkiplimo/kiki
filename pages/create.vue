@@ -6,6 +6,8 @@ import { useRouter } from "vue-router";
 // Import composable for API functions
 const { createCar } = useCar();
 const router = useRouter();
+const image = ref(null);
+
 
 // Reactive state for the car form
 const car = ref({
@@ -21,6 +23,7 @@ const car = ref({
   transmission:'',
   engine:'',
   description:'',
+  image:'',
  
 
 
@@ -28,10 +31,18 @@ const car = ref({
 
 });
 
+// handle image
+const handleImageUpload = (event:any) => {
+  image.value = event.target.files[0]; // Store file, not base64
+  if (image.value) {
+    
+  }
+};
+
 // Form submission handler
 const handleSubmit = async () => {
   // Validation for required fields
-  if (!car.value.brand || !car.value.plate || !car.value.model || !car.value.color || !car.value.milage || !car.value.year || !car.value.price || !car.value.fuel || !car.value.capacity || !car.value.transmission || !car.value.engine || !car.value.description) {
+  if (!car.value.brand || !car.value.plate || !car.value.model || !car.value.color || !car.value.milage || !car.value.year || !car.value.price || !car.value.fuel || !car.value.capacity || !car.value.transmission || !car.value.engine || !car.value.description || !image.value) {
     alert("Please fill in all required fields.");
     return;
   }
@@ -119,6 +130,11 @@ const handleSubmit = async () => {
         <div>
         <label for="type"  class="block text-sm font-medium text-gray-700">Description</label>
         <input type="text" v-model="car.description" id="description" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
+        
+        </div>
+        <div>
+        <label for="type"  class="block text-sm font-medium text-gray-700">Image</label>
+        <input type="file" @change="handleImageUpload" id="image" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500 sm:text-sm" />
         
         </div>
       </div>

@@ -13,6 +13,7 @@ interface Car {
   engine: string;
   transmission: string;
   description: string;
+  image: string;
 }
 
 interface CarCredentials {
@@ -28,6 +29,7 @@ interface CarCredentials {
   engine: string;
   transmission: string;
   description: string;
+  image: string;
 
 }
 
