@@ -18,7 +18,7 @@ import Profile from './Profile.vue';
         </div>
         <ul class="flex space-x-6">
           <li><a href="/" class="hover:text-gray-300">Home</a></li>
-          <li><a href="/products" class="hover:text-gray-300">Cars</a></li>
+          <li><a href="/cars" class="hover:text-gray-300">Products</a></li>
           <li><a href="/contact" class="hover:text-gray-300">Contact</a></li>
          
         </ul>
