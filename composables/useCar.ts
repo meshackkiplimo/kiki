@@ -13,7 +13,7 @@ interface Car {
   engine: string;
   transmission: string;
   description: string;
-  image: string;
+  image: File | null;
 }
 
 interface CarCredentials {
@@ -29,8 +29,7 @@ interface CarCredentials {
   engine: string;
   transmission: string;
   description: string;
-  image: string;
-
+  image: File | null;
 }
 
 export const useCar = () => {
@@ -43,7 +42,7 @@ export const useCar = () => {
   // Fetch all cars
   const fetchCars = async () => {
     try {
-      const response = await fetch(`${baseURL}/cars`); // ✅ Fix: Correct endpoint
+      const response = await fetch(`${baseURL}/cars`);
       const data = await response.json();
 
       if (!response.ok) {
@@ -60,10 +59,20 @@ export const useCar = () => {
   // Create a new car
   const createCar = async (credentials: CarCredentials) => {
     try {
+      const formData = new FormData();
+      
+      // Add all car data to FormData
+      Object.keys(credentials).forEach((key) => {
+        if (key === 'image' && credentials.image instanceof File) {
+          formData.append('image', credentials.image);
+        } else {
+          formData.append(key, String(credentials[key as keyof CarCredentials]));
+        }
+      });
+
       const response = await fetch(`${baseURL}/cars/create`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }, 
-        body: JSON.stringify(credentials),
+        body: formData, // Send as FormData instead of JSON
       });
 
       const data = await response.json();
@@ -72,7 +81,7 @@ export const useCar = () => {
         throw new Error(data.message || 'Failed to create car');
       }
 
-      cars.value.push(data.car); // ✅ Fix: Add to list only if successful
+      cars.value.push(data.car);
       return data;
     } catch (error) {
       console.error('Error creating car:', error);
@@ -100,10 +109,20 @@ export const useCar = () => {
   // Update a car
   const updateCar = async (carId: string, credentials: CarCredentials) => {
     try {
-      const response = await fetch(`${baseURL}/cars/${carId}/update`, {
+      const formData = new FormData();
+      
+      // Add all car data to FormData
+      Object.keys(credentials).forEach((key) => {
+        if (key === 'image' && credentials.image instanceof File) {
+          formData.append('image', credentials.image);
+        } else {
+          formData.append(key, String(credentials[key as keyof CarCredentials]));
+        }
+      });
+
+      const response = await fetch(`${baseURL}/cars/${carId}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json' }, // ✅ Fix: Correct content type
-        body: JSON.stringify(credentials),
+        body: formData,
       });
 
       const data = await response.json();
@@ -122,7 +141,7 @@ export const useCar = () => {
   // Delete a car
   const deleteCar = async (carId: string) => {
     try {
-      const response = await fetch(`${baseURL}/cars/${carId}/delete`, {
+      const response = await fetch(`${baseURL}/cars/${carId}`, {
         method: 'DELETE',
       });
 
@@ -132,7 +151,7 @@ export const useCar = () => {
         throw new Error(data.message || 'Failed to delete car');
       }
 
-      cars.value = cars.value.filter((car) => car.plate !== carId); // ✅ Fix: Use correct identifier
+      cars.value = cars.value.filter((car) => car.plate !== carId);
       return data;
     } catch (error) {
       console.error('Error deleting car:', error);
@@ -150,3 +169,5 @@ export const useCar = () => {
     deleteCar,
   };
 };
+
+
