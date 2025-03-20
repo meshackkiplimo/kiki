@@ -1,12 +1,28 @@
 <script setup>
 import { onMounted } from 'vue';
 import { useCar } from '../composables/useCar';
+import { useCart } from '../composables/useCart';
 
 const { cars, fetchCars } = useCar();
+const { addToCart } = useCart();
 
 onMounted(() => {
   fetchCars();
 });
+
+const handleImageError = (e) => {
+  e.target.src = '/api/placeholder/300/200';
+};
+
+const handleAddToCart = (car) => {
+  addToCart({
+    id: car.plate,
+    name: `${car.brand} ${car.model}`,
+    price: car.price,
+    image: car.imageUrl,
+    quantity: 1
+  });
+};
 </script>
 
 <template>
@@ -16,7 +32,6 @@ onMounted(() => {
     <div v-else class="cars-container">
       <div v-for="car in cars" :key="car.plate" class="car-card">
         <div class="car-image">
-          <!-- Assuming car.imageUrl is the property in your database -->
           <img
             :src="car.imageUrl"
             :alt="`${car.brand} ${car.model}`"
@@ -38,23 +53,12 @@ onMounted(() => {
             <p><strong>Transmission:</strong> {{ car.transmission }}</p>
           </div>
           <p class="car-description"><strong>Description:</strong> {{ car.description }}</p>
-          <button class="purchase-btn">Add to Cart</button>
+          <button class="purchase-btn" @click="handleAddToCart(car)">Add to Cart</button>
         </div>
       </div>
     </div>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    handleImageError(e) {
-      // If image fails to load, replace with a placeholder
-      e.target.src = '/api/placeholder/300/200';
-    }
-  }
-}
-</script>
 
 <style scoped>
 .cars-container {
